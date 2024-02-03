@@ -7,7 +7,6 @@ class Solution:
         for i in range(1,n+1):
             if s[:i]!=s[:i][::-1]:
                 continue
-            cur = self.partition(s[i:])
-            for j in range(len(cur)):
-                res.append([s[:i]] + cur[j])
+            for suf in self.partition(s[i:]):
+                res.append([s[:i]]+suf)
         return res
