@@ -1,7 +1,7 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         res = []
-
+#using backtracking
         def backtracking(curr,o,c):
             if o==n and c==n:
                 res.append(curr)
