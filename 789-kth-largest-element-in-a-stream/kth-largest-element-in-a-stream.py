@@ -1,5 +1,5 @@
 class KthLargest:
-
+#note: Heapq are not indexed to access smallest elements, you need to pop to get the nth smallest element.
     def __init__(self, k: int, nums: List[int]):
         self.minHeap = nums
         self.k=k
