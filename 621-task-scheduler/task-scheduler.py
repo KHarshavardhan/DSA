@@ -1,22 +1,17 @@
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
-        #Counter will count all the unique values and their occurences in a hashmap i.e count
-        count = Counter(tasks)
-        #Creating a maxHeap Heap which will have the count of unique var occurences
-        maxHeap = [-c for c in count.values()]
-        heapq.heapify(maxHeap)
-        #deque is used to store the use of a var and its next possible usage time i.e time+n
-        q = deque()
-        time = 0
-        while maxHeap or q:
-            time +=1
-            #if heap still has elements, we check reduce the count and add it to q(deque) with time
-            if maxHeap:
-                e = 1 + heapq.heappop(maxHeap)
-                if e:
-                    q.append([e,time+n])
-            # if left most element in queue has current time, we will pop it out and add back to heap 
+        c = Counter(tasks)
+        minHeap = [-n for n in c.values()]
+        heapq.heapify(minHeap)
+        q= deque()
+        time=0
+        print(minHeap)
+        while minHeap or q:
+            time+=1
+            if minHeap:
+                temp = 1 + heapq.heappop(minHeap)
+                if temp:
+                    q.append([temp,time+n])
             if q and q[0][1]==time:
-                heapq.heappush(maxHeap,q.popleft()[0])
+                heapq.heappush(minHeap,q.popleft()[0])
         return time
-
