@@ -9,13 +9,14 @@ class Node:
 from typing import Optional
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
+        #create a hashmap to store the new nodes while creating them
         clone={}
-        def dfs(node):
+        def copyNode(node):
             if node in clone:
                 return clone[node]
             copy = Node(node.val)
             clone[node]=copy
             for n in node.neighbors:
-                copy.neighbors.append(dfs(n))
+                copy.neighbors.append(copyNode(n))
             return copy
-        return dfs(node) if node else None
+        return copyNode(node) if node else None
