@@ -4,6 +4,7 @@ class Solution:
         visitp =[]
         visita=[]
         res=[]
+        #check if water can pass from pacific to how many cells as possible(if current value is less than next value) and add them into visitp. same in atlantic add to visita
         def dfs(r,c,visit,temp):
             if(r<0 or c<0 or r>=row or c>=col or [r,c] in visit or heights[r][c]<temp):
                 return
@@ -25,6 +26,7 @@ class Solution:
                     dfs(j,k,visita,heights[j][k])
             else:
                 dfs(row-1,k,visita,heights[row-1][k])
+        #once the two lisit is created with cells which has pacific water and atlantic separte then check for common cells and return them.
         for rp,cp in visitp:
             if [rp,cp] in visita:
                 res.append([rp,cp])
