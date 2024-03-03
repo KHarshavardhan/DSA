@@ -1,15 +1,15 @@
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
         row,col=len(heights),len(heights[0])
-        visitp =[]
-        visita=[]
+        visitp =set()
+        visita=set()
         res=[]
         #check if water can pass from pacific to how many cells as possible(if current value is less than next value) and add them into visitp. same in atlantic add to visita
         def dfs(r,c,visit,temp):
-            if(r<0 or c<0 or r>=row or c>=col or [r,c] in visit or heights[r][c]<temp):
+            if(r<0 or c<0 or r>=row or c>=col or (r,c) in visit or heights[r][c]<temp):
                 return
             temp=heights[r][c]
-            visit.append([r,c])
+            visit.add((r,c))
             dfs(r+1,c,visit,temp)
             dfs(r-1,c,visit,temp)
             dfs(r,c+1,visit,temp)
@@ -27,8 +27,9 @@ class Solution:
             else:
                 dfs(row-1,k,visita,heights[row-1][k])
         #once the two lisit is created with cells which has pacific water and atlantic separte then check for common cells and return them.
-        for rp,cp in visitp:
-            if [rp,cp] in visita:
-                res.append([rp,cp])
+        for r in range(row):
+            for c in range(col):
+                if (r,c) in visita and (r,c) in visitp:
+                    res.append([r,c])
         return res
         
