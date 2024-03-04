@@ -18,9 +18,7 @@ class Solution:
         
         for r in range(row):
             for c in range(col):
-                if r in [0,row-1] and board[r][c]=='O':
-                    dfs(r,c)
-                elif r in range(1,row-1) and c in [0,col-1] and board[r][c]=='O':
+                if board[r][c]=='O' and (r in [0,row-1] or c in [0,col-1]):
                     dfs(r,c)
         for r in range(row):
             for c in range(col):
