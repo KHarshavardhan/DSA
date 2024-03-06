@@ -7,8 +7,8 @@ class Solution:
             p=par[n]
 
             while p!=par[p]:
-                par[n]=par[par[n]]
-                p=par[n]
+                par[p]=par[par[p]]
+                p=par[p]
 
             return p
         def union(n1,n2):
