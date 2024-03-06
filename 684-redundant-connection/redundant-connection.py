@@ -1,12 +1,15 @@
 class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
         par=[i for i in range(len(edges)+1)]
-        rank = [1]*(len(edges)+1)
+        rank=[1]* (len(edges)+1)
+
         def find(n):
             p=par[n]
+
             while p!=par[p]:
-                par[n]=par[par[p]]
-                p=par[p]
+                par[n]=par[par[n]]
+                p=par[n]
+
             return p
         def union(n1,n2):
             p1,p2=find(n1),find(n2)
