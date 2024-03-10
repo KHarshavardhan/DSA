@@ -1,5 +1,6 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        #need to run the house robber 1 sol twice for two subsets
         if len(nums)==1:
             return nums[0]
         else:
