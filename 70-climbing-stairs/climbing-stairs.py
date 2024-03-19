@@ -1,16 +1,10 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        if n==1:
-            return 1
-        else:
-            res=0
-            one = 1
-            two = 1
-            while n>1:
-                res=one+two
-                temp=one
-                one=res
-                two=temp
-                n-=1
-            return res
-
+        if n<=2:
+            return n
+        res = [-1]*n
+        res[0]=1
+        res[1]=2
+        for i in range(2,n):
+            res[i]=res[i-1]+res[i-2]
+        return res[n-1]
