@@ -1,12 +1,11 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
         res=[0]
-        dp=[-1]*(n*2)
+        dp=[-1]*(n+1)
         def f(m):
             if m>n:
                 return 0
             if m==n:
-                # res[0]+=1
                 return 1
             if dp[m]!=-1:
                 return dp[m]
