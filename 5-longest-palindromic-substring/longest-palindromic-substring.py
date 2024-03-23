@@ -18,4 +18,3 @@ class Solution:
             l,r=i,i+1
             pal(l,r)
         return result
-            
