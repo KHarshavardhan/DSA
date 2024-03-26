@@ -6,5 +6,5 @@ class Solution:
             temp=cMax
             cMax=max(cMax*n,cMin*n,n)
             cMin=min(temp*n,cMin*n,n)
-            res=max(res,cMax,cMin)
+            res=max(res,cMax)
         return res
